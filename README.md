@@ -11,11 +11,11 @@ This implementation features a classic memory matching game where players need t
 - Vue.js 3
 - HTML5
 - CSS3
-- JavaScript (ES6+)
+- JavaScript
 
 ## Features
 
-- 8x2 card grid layout
+- 4x4 card grid layout
 - Move counter
 - Card matching logic
 - Smooth animations
@@ -25,7 +25,7 @@ This implementation features a classic memory matching game where players need t
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[username]/card-game.git
+git clone https://github.com/Dennel04/card-game.git
 ```
 
 2. Navigate to the project directory:
