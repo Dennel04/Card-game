@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="game-container">
+            <header class="game-header">
+                <h1>Memory</h1>
+                <div class="stats-panel">
+                    <div class="stat-tile">
+                        <span class="stat-number">{{ moves }}</span>
+                        <span class="stat-label">moves</span>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-number">{{ matchedPairs }}</span>
+                        <span class="stat-label">pairs</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="game-board">
+                <div 
+                    v-for="(card, index) in cards" 
+                    :key="index"
+                    :class="['card-tile', { 
+                        'flipped': card.flipped, 
+                        'matched': card.matched,
+                        'hide': card.hide 
+                    }]"
+                    @click="flipCard(index)"
+                >
+                    <div class="card-content">
+                        <div class="card-back"></div>
+                        <div class="card-front">
+                            {{ card.symbol }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <transition name="slide-up">
+                <div v-if="gameOver" class="game-over-overlay">
+                    <div class="game-over-panel">
+                        <h2>Game Complete!</h2>
+                        <div class="final-stats">
+                            <div class="final-stat">
+                                <span class="final-number">{{ moves }}</span>
+                                <span class="final-label">Total Moves</span>
+                            </div>
+                        </div>
+                        <button class="restart-btn" @click="restartGame">
+                            Play Again
+                        </button>
+                    </div>
+                </div>
+            </transition>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
